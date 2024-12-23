@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:oktoast/oktoast.dart';
+import 'package:flutter/services.dart';
 
 import 'package:rmst_flutter/app_page.dart';
 
@@ -21,9 +24,28 @@ class MyApp extends StatelessWidget {
         hoverColor: Colors.transparent,
       ),
       home: Scaffold(
-        body: AppPage(),
+        appBar: AppBar(
+          toolbarHeight: 0,
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.transparent,
+          systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
+            statusBarColor: Colors.transparent,
+            systemNavigationBarColor: Colors.transparent,
+          ),
+        ),
+        body: SafeArea(
+          child: AppPage(),
+        ),
+        drawer: Container(
+          width: 200,
+          decoration: BoxDecoration(color: Colors.white),
+          child: SafeArea(
+            child: Column(
+              children: [Text('Drawer'), Text('Drawer2')],
+            ),
+          ),
+        ),
         backgroundColor: Colors.white,
-        drawer: Text('234234'),
       ),
       debugShowCheckedModeBanner: false,
     );

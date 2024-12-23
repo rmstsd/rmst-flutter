@@ -32,21 +32,15 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    const column = Column(
+    final column = Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [TopBar(), TopSearchBar(), SearchResult()],
     );
 
-    final container = Container(
-      decoration: BoxDecoration(
-        color: Colors.orange,
-      ),
+    var container = Container(
+      decoration: BoxDecoration(),
       child: column,
     );
-
-    return container;
-
-    // 会挂掉
 
     return Expanded(
       child: container,

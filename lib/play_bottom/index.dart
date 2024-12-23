@@ -14,7 +14,7 @@ class _PlayBottomState extends State<PlayBottom> {
       height: 50,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [Text('2323')],
+        children: [Text('刚刚规划计划方法 大范甘迪 uuu')],
       ),
     );
   }

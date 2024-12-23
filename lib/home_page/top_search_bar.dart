@@ -24,7 +24,7 @@ class _TopSearchBarState extends State<TopSearchBar> {
         spacing: 10,
         children: [
           Text(
-            '聚合大会',
+            'hh吧',
             style: TextStyle(
               backgroundColor: const Color.fromARGB(255, 238, 210, 208),
             ),
