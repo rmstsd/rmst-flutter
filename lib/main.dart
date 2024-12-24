@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:flutter/services.dart';
@@ -22,6 +20,7 @@ class MyApp extends StatelessWidget {
         splashFactory: NoSplash.splashFactory,
         highlightColor: Colors.transparent,
         hoverColor: Colors.transparent,
+        appBarTheme: AppBarTheme(scrolledUnderElevation: 0),
       ),
       home: Scaffold(
         appBar: AppBar(

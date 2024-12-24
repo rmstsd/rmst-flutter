@@ -3,8 +3,12 @@ import 'package:rmst_flutter/home_page/index.dart';
 import 'package:rmst_flutter/play_bottom/index.dart';
 
 class AppPage extends StatefulWidget {
+  const AppPage({
+    super.key,
+  });
+
   @override
-  _AppPageState createState() => _AppPageState();
+  createState() => _AppPageState();
 }
 
 class _AppPageState extends State<AppPage> {

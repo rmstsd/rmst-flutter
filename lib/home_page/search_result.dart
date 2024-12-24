@@ -8,7 +8,7 @@ class SearchResult extends StatefulWidget {
   });
 
   @override
-  _SearchResultState createState() => _SearchResultState();
+  createState() => _SearchResultState();
 }
 
 int getRandomIntInRange(int min, int max) {
@@ -17,10 +17,9 @@ int getRandomIntInRange(int min, int max) {
 }
 
 class _SearchResultState extends State<SearchResult> {
-  final list = List.generate(333, (index) {
-    return DateTime.now().millisecondsSinceEpoch.toRadixString(36);
-    // *
-    // getRandomIntInRange(2, 30);
+  final list = List.generate(50, (index) {
+    return DateTime.now().millisecondsSinceEpoch.toRadixString(36) *
+        getRandomIntInRange(2, 4);
   });
 
   @override
@@ -33,18 +32,20 @@ class _SearchResultState extends State<SearchResult> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
-                  child: AspectRatio(
-                    aspectRatio: 1,
-                    child: Image.asset(
-                      'lib/images/a.png',
-                      fit: BoxFit.cover,
-                    ),
+                  child: Image.asset(
+                    'lib/images/a.png',
+                    fit: BoxFit.cover,
                   ),
                 ),
                 Container(
-                  color: Colors.pink,
-                  height: 30,
-                  child: Text('item'),
+                  margin: EdgeInsets.only(top: 4),
+                  height: 40,
+                  child: Text(
+                    item,
+                    style: TextStyle(),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 )
               ],
             ),
@@ -57,7 +58,7 @@ class _SearchResultState extends State<SearchResult> {
       crossAxisSpacing: 10,
       padding: EdgeInsets.all(10),
       crossAxisCount: 3,
-      childAspectRatio: 2,
+      childAspectRatio: 0.8,
       children: cards,
     );
 
