@@ -17,9 +17,9 @@ int getRandomIntInRange(int min, int max) {
 }
 
 class _SearchResultState extends State<SearchResult> {
-  final list = List.generate(50, (index) {
+  final list = List.generate(2, (index) {
     return DateTime.now().millisecondsSinceEpoch.toRadixString(36) *
-        getRandomIntInRange(2, 4);
+        getRandomIntInRange(2, 8);
   });
 
   @override
@@ -27,28 +27,7 @@ class _SearchResultState extends State<SearchResult> {
     final cards = list
         .map(
           (item) => Container(
-            decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: Image.asset(
-                    'lib/images/a.png',
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 4),
-                  height: 40,
-                  child: Text(
-                    item,
-                    style: TextStyle(),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                )
-              ],
-            ),
+            decoration: BoxDecoration(color: Colors.red),
           ),
         )
         .toList();
@@ -58,7 +37,7 @@ class _SearchResultState extends State<SearchResult> {
       crossAxisSpacing: 10,
       padding: EdgeInsets.all(10),
       crossAxisCount: 3,
-      childAspectRatio: 0.8,
+      childAspectRatio: 0.55,
       children: cards,
     );
 

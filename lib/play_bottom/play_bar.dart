@@ -1,16 +1,20 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:tdesign_flutter/tdesign_flutter.dart';
 
 class PlayBar extends StatefulWidget {
-  const PlayBar({super.key});
+  const PlayBar({
+    super.key,
+  });
 
   @override
   State<PlayBar> createState() => _PlayBarState();
 }
 
 class _PlayBarState extends State<PlayBar> {
-  onTapDown(TapDownDetails detail) {
-    final renderBox = anchorKey.currentContext?.findRenderObject() as RenderBox;
-    final percent = detail.localPosition.dx / renderBox.size.width;
+  _updateValueByLocalPositionDx(double dx) {
+    final renderBox = prgKey.currentContext?.findRenderObject() as RenderBox;
+    final percent = clampDouble(dx / renderBox.size.width, 0, 1);
 
     setState(() {
       value = percent;
@@ -19,7 +23,7 @@ class _PlayBarState extends State<PlayBar> {
 
   var value = 0.5;
 
-  GlobalKey anchorKey = GlobalKey();
+  GlobalKey prgKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +34,14 @@ class _PlayBarState extends State<PlayBar> {
         fit: StackFit.expand,
         children: [
           GestureDetector(
-            onTapDown: onTapDown,
+            onHorizontalDragUpdate: (details) {
+              _updateValueByLocalPositionDx(details.localPosition.dx);
+            },
+            onHorizontalDragEnd: (details) {
+              _updateValueByLocalPositionDx(details.localPosition.dx);
+            },
             child: LinearProgressIndicator(
-              key: anchorKey,
+              key: prgKey,
               borderRadius: BorderRadius.circular(2),
               value: value,
               valueColor: AlwaysStoppedAnimation(Colors.purple.shade50),
