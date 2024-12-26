@@ -4,16 +4,16 @@ import 'package:rmst_flutter/home_page/search_result.dart';
 import 'package:rmst_flutter/home_page/top_bar.dart';
 import 'package:rmst_flutter/home_page/top_search_bar.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({
+class OldHomePage extends StatefulWidget {
+  const OldHomePage({
     super.key,
   });
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<OldHomePage> createState() => _OldHomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _OldHomePageState extends State<OldHomePage> {
   String userName = '';
 
   add(nn) {

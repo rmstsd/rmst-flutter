@@ -16,7 +16,7 @@ class _AppPageState extends State<AppPage> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        HomePage(),
+        OldHomePage(),
         PlayBottom(),
       ],
     );
