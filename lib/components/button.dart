@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
 class RtButton extends StatefulWidget {
-  const RtButton(
-    this.data, {
-    super.key,
-  });
+  const RtButton(this.data, {super.key, required this.onTap, this.textColor});
 
   final String data;
+  final Function() onTap;
+  final Color? textColor;
 
   @override
   State<StatefulWidget> createState() => _RtButtonState();
@@ -20,9 +19,7 @@ class _RtButtonState extends State<RtButton> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => {
-        print('点击了按钮'),
-      },
+      onTap: () => {widget.onTap()},
       onTapDown: (details) => {
         setState(() {
           _buttonStatus = ButtonStatus.active;
@@ -44,7 +41,7 @@ class _RtButtonState extends State<RtButton> {
             bottom: BorderSide(
               color: _buttonStatus == ButtonStatus.active
                   ? Color.fromRGBO(0, 0, 0, 0.3)
-                  : Colors.black,
+                  : widget.textColor ?? Colors.black,
               width: 1,
             ),
           ),
@@ -54,7 +51,7 @@ class _RtButtonState extends State<RtButton> {
           style: TextStyle(
             color: _buttonStatus == ButtonStatus.active
                 ? Color.fromRGBO(0, 0, 0, 0.3)
-                : Colors.black,
+                : widget.textColor ?? Colors.black,
           ),
         ),
       ),

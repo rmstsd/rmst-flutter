@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 
 class RtTabs extends StatefulWidget {
-  const RtTabs({super.key, required this.tabList});
+  RtTabs({
+    super.key,
+    required this.tabList,
+    required this.activeIndex,
+    required this.onChange,
+  });
+
+  int activeIndex;
+  final void Function(int index) onChange;
 
   final List<String> tabList;
 
@@ -20,18 +28,37 @@ class _RtTabsState extends State<RtTabs> {
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Row(
         spacing: 10,
-        children: widget.tabList
-            .map(
-              (item) => Center(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: widget.tabList.asMap().entries.map((item) {
+          var display = Stack(
+            alignment: Alignment.center,
+            children: [
+              Text(item.value),
+              Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                height: 2,
                 child: Container(
                   decoration: BoxDecoration(
-                    border: Border(bottom: BorderSide(color: Colors.grey)),
+                    color: widget.activeIndex == item.key
+                        ? Color.fromARGB(255, 175, 175, 175)
+                        : Colors.transparent,
                   ),
-                  child: Text(item),
                 ),
               ),
-            )
-            .toList(),
+            ],
+          );
+
+          return GestureDetector(
+            onTap: () => setState(() {
+              // widget.activeIndex = item.key;
+
+              widget.onChange(item.key);
+            }),
+            child: display,
+          );
+        }).toList(),
       ),
     );
   }
