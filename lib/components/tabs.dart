@@ -22,15 +22,13 @@ class _RtTabsState extends State<RtTabs> {
         spacing: 10,
         children: widget.tabList
             .map(
-              (item) => Column(
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      border: Border(bottom: BorderSide(color: Colors.grey)),
-                    ),
-                    child: Text(item),
+              (item) => Center(
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border(bottom: BorderSide(color: Colors.grey)),
                   ),
-                ],
+                  child: Text(item),
+                ),
               ),
             )
             .toList(),
