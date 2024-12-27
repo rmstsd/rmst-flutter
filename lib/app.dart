@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:rmst_flutter/components/page_screen.dart';
 import 'package:rmst_flutter/pages/home/home.dart';
 
@@ -13,7 +13,7 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     final mainApp = WidgetsApp(
-      color: Colors.white,
+      color: Color.fromRGBO(255, 255, 255, 1),
       title: 'rmst-flutter',
       pageRouteBuilder: <T>(settings, builder) {
         return PageRouteBuilder(
@@ -28,7 +28,7 @@ class _AppState extends State<App> {
     return DefaultTextStyle.merge(
       style: TextStyle(
         fontSize: 24,
-        color: Colors.black,
+        color: Color.fromRGBO(0, 0, 0, 1),
       ),
       child: mainApp,
     );

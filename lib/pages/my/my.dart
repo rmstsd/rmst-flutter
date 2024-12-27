@@ -1,15 +1,41 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:rmst_flutter/components/button.dart';
+import 'package:tdesign_flutter/tdesign_flutter.dart';
 
-class My extends StatelessWidget {
+class My extends StatefulWidget {
   const My({super.key});
 
   @override
+  createState() => MyState();
+}
+
+class MyState extends State<My> {
+  var disabled = false;
+
+  @override
   Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: () {
-        Navigator.pop(context);
-      },
-      child: Text('my'),
+    return Column(
+      spacing: 4,
+      children: [
+        RtButton(
+          'aaa',
+          disabled: disabled,
+          onTap: () {
+            print('aaa');
+            setState(() {
+              disabled = !disabled;
+            });
+          },
+        ),
+        RtButton(
+          '哈哈哈',
+          loading: true,
+        ),
+        RtButton(
+          '禁用',
+          disabled: true,
+        ),
+      ],
     );
   }
 }

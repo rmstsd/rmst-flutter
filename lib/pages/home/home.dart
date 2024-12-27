@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rmst_flutter/components/button.dart';
 import 'package:rmst_flutter/components/tabs.dart';
+import 'package:rmst_flutter/pages/my/my.dart';
 import 'package:rmst_flutter/utils/index.dart';
 
 class HomePage extends StatefulWidget {
@@ -25,7 +26,7 @@ class _HomePageState extends State<HomePage> {
           onChange: (index) => {
             setState(() {
               activeIndex = index;
-            })
+            }),
           },
         ),
         Text(
@@ -39,7 +40,7 @@ class _HomePageState extends State<HomePage> {
       ],
     );
 
-    final myDisplay = Text('my');
+    final myDisplay = My();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,

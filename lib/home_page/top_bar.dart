@@ -34,8 +34,8 @@ class _TopBarState extends State<TopBar> {
           Wrap(
             spacing: 6,
             children: [
-              RtButton('按钮1'),
-              RtButton('按钮2'),
+              RtButton('按钮1', onTap: () {}),
+              RtButton('按钮2', onTap: () => {}),
             ],
           )
         ],

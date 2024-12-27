@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:rmst_flutter/utils/colors.dart';
 
 class RtTabs extends StatefulWidget {
   RtTabs({
@@ -22,7 +23,7 @@ class _RtTabsState extends State<RtTabs> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        border: Border(bottom: BorderSide(color: Colors.grey)),
+        border: Border(bottom: BorderSide(color: Colors.black)),
       ),
       height: 40,
       padding: const EdgeInsets.symmetric(horizontal: 10),

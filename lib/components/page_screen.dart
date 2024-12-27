@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:rmst_flutter/utils/colors.dart';
 
 class PageScreen extends StatelessWidget {
   const PageScreen({super.key, required this.child});
