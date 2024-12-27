@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:rmst_flutter/components/button.dart';
-import 'package:tdesign_flutter/tdesign_flutter.dart';
 
 class My extends StatefulWidget {
   const My({super.key});
@@ -18,7 +17,7 @@ class MyState extends State<My> {
       spacing: 4,
       children: [
         RtButton(
-          'aaa',
+          'aaaff',
           disabled: disabled,
           onTap: () {
             print('aaa');

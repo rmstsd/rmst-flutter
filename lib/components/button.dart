@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tdesign_flutter/tdesign_flutter.dart';
 
 enum ButtonStatus { defaultState, active }
 
@@ -46,6 +49,13 @@ class _RtButtonState extends State<RtButton> {
     });
   }
 
+  @override
+  dispose() {
+    super.dispose();
+
+    print('dispose');
+  }
+
   _getBgColor() {
     if (widget.disabled) {
       return Colors.green.shade200;
@@ -57,6 +67,8 @@ class _RtButtonState extends State<RtButton> {
       return Colors.green.shade500;
     }
   }
+
+  var color = Colors.green.shade500;
 
   @override
   Widget build(BuildContext context) {
@@ -73,22 +85,6 @@ class _RtButtonState extends State<RtButton> {
         ),
       ),
     );
-
-    if (widget.loading) {
-      const String assetName = 'lib/images/icons/loading.svg';
-      final Widget loadingWidget = SvgPicture.asset(
-        assetName,
-        colorFilter: ColorFilter.mode(Colors.red, BlendMode.srcIn),
-        width: 24,
-        height: 24,
-      );
-
-      return Container(
-        width: 100,
-        height: 100,
-        child: loadingWidget,
-      );
-    }
 
     if (widget.disabled) {
       return display;
