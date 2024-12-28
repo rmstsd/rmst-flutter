@@ -1,16 +1,24 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class Loading extends StatefulWidget {
+class RtLoading extends StatefulWidget {
+  const RtLoading({
+    super.key,
+    this.color = const Color.fromARGB(255, 161, 235, 163),
+  });
+
+  final Color color;
+
   @override
-  State<StatefulWidget> createState() => _LoadingState();
+  State<StatefulWidget> createState() => _RtLoadingState();
 }
 
-class _LoadingState extends State<Loading> with SingleTickerProviderStateMixin {
-  late dynamic _animation1;
-  late dynamic _controller;
+class _RtLoadingState extends State<RtLoading>
+    with SingleTickerProviderStateMixin {
+  late Animation _animation1;
+  late AnimationController _controller;
 
   @override
   void initState() {
@@ -23,11 +31,7 @@ class _LoadingState extends State<Loading> with SingleTickerProviderStateMixin {
     _animation1 = Tween(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
         parent: _controller,
-        curve: const Interval(
-          0.0,
-          1.0,
-          curve: Curves.linear,
-        ),
+        curve: const Interval(0.0, 1.0),
       ),
     );
   }
@@ -36,21 +40,17 @@ class _LoadingState extends State<Loading> with SingleTickerProviderStateMixin {
   void dispose() {
     _controller.dispose();
     super.dispose();
+
+    print('rtloading dispose');
   }
 
   @override
   Widget build(BuildContext context) {
-    var ld = Container(
-      width: 100,
-      height: 100,
-      decoration: BoxDecoration(
-        border: Border(
-          left: BorderSide(color: Colors.green.shade500, width: 4),
-          top: BorderSide(color: Colors.green.shade500, width: 4),
-          right: BorderSide(color: Colors.green.shade500, width: 4),
-        ),
-        borderRadius: BorderRadius.circular(100),
-      ),
+    var ld = SvgPicture.asset(
+      width: 20,
+      height: 20,
+      colorFilter: ColorFilter.mode(widget.color, BlendMode.srcIn),
+      'lib/images/loading.svg',
     );
 
     return Transform.rotate(angle: (_animation1.value) * 2 * pi, child: ld);

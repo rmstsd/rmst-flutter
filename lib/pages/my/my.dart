@@ -1,5 +1,12 @@
+import 'dart:async';
+
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rmst_flutter/components/button.dart';
+import 'package:rmst_flutter/components/loading.dart';
+import 'package:rmst_flutter/components/time_show.dart';
+import 'package:tdesign_flutter/tdesign_flutter.dart';
 
 class My extends StatefulWidget {
   const My({super.key});
@@ -20,9 +27,14 @@ class MyState extends State<My> {
           'aaaff',
           disabled: disabled,
           onTap: () {
-            print('aaa');
             setState(() {
               disabled = !disabled;
+            });
+
+            Timer(Duration(seconds: 1), () {
+              setState(() {
+                disabled = false;
+              });
             });
           },
         ),
@@ -33,6 +45,14 @@ class MyState extends State<My> {
         RtButton(
           '禁用',
           disabled: true,
+        ),
+        RtLoading(),
+        RtTimeShow(),
+        RtButton(
+          'try',
+          onTap: () {
+            print('try');
+          },
         ),
       ],
     );

@@ -1,8 +1,5 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tdesign_flutter/tdesign_flutter.dart';
+import 'package:rmst_flutter/components/loading.dart';
 
 enum ButtonStatus { defaultState, active }
 
@@ -52,12 +49,10 @@ class _RtButtonState extends State<RtButton> {
   @override
   dispose() {
     super.dispose();
-
-    print('dispose');
   }
 
   _getBgColor() {
-    if (widget.disabled) {
+    if (widget.disabled || widget.loading) {
       return Colors.green.shade200;
     } else {
       if (_buttonStatus == ButtonStatus.active) {
@@ -73,20 +68,28 @@ class _RtButtonState extends State<RtButton> {
   @override
   Widget build(BuildContext context) {
     var display = Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-      decoration: BoxDecoration(
-        color: _getBgColor(),
-        borderRadius: BorderRadius.circular(4),
-      ),
-      child: Text(
-        widget.data,
-        style: TextStyle(
-          color: Colors.white,
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+        decoration: BoxDecoration(
+          color: _getBgColor(),
+          borderRadius: BorderRadius.circular(4),
         ),
-      ),
-    );
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (widget.loading)
+              RtLoading(
+                color: Colors.white,
+              ),
+            Text(
+              widget.data,
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+          ],
+        ));
 
-    if (widget.disabled) {
+    if (widget.disabled || widget.loading) {
       return display;
     }
 
