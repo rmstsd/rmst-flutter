@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:rmst_flutter/components/page_screen.dart';
 import 'package:rmst_flutter/pages/home/home.dart';
@@ -12,25 +13,19 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
-    final mainApp = WidgetsApp(
+    final mainApp = MaterialApp(
       color: Color.fromRGBO(255, 255, 255, 1),
       title: 'rmst-flutter',
-      pageRouteBuilder: <T>(settings, builder) {
-        return PageRouteBuilder(
-          settings: settings,
-          pageBuilder: (context, _, __) => builder(context),
-        );
-      },
-      home: PageScreen(child: HomePage()),
+      theme: ThemeData(
+        textTheme: TextTheme(),
+      ),
+      home: Scaffold(
+        backgroundColor: Colors.white,
+        body: PageScreen(child: HomePage()),
+      ),
       debugShowCheckedModeBanner: false,
     );
 
-    return DefaultTextStyle.merge(
-      style: TextStyle(
-        fontSize: 24,
-        color: Color.fromRGBO(0, 0, 0, 1),
-      ),
-      child: mainApp,
-    );
+    return mainApp;
   }
 }

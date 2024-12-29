@@ -31,7 +31,7 @@ class _RtLoadingState extends State<RtLoading>
     _animation1 = Tween(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
         parent: _controller,
-        curve: const Interval(0.0, 1.0),
+        curve: Curves.linear,
       ),
     );
   }

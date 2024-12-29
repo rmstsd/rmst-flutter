@@ -1,5 +1,4 @@
-import 'package:flutter/widgets.dart';
-import 'package:rmst_flutter/utils/colors.dart';
+import 'package:flutter/material.dart';
 
 class PageScreen extends StatelessWidget {
   const PageScreen({super.key, required this.child});
@@ -8,11 +7,11 @@ class PageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: SafeArea(
-        child: child,
-      ),
+    final display = SafeArea(child: child);
+
+    return DefaultTextStyle.merge(
+      style: TextStyle(fontSize: 20),
+      child: display,
     );
   }
 }

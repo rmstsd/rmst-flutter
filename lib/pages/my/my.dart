@@ -2,10 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rmst_flutter/components/button.dart';
+import 'package:rmst_flutter/components/input.dart';
 import 'package:rmst_flutter/components/loading.dart';
 import 'package:rmst_flutter/components/time_show.dart';
+import 'package:rmst_flutter/utils/index.dart';
 import 'package:tdesign_flutter/tdesign_flutter.dart';
 
 class My extends StatefulWidget {
@@ -17,6 +18,8 @@ class My extends StatefulWidget {
 
 class MyState extends State<My> {
   var disabled = false;
+
+  var value = '';
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +57,30 @@ class MyState extends State<My> {
             print('try');
           },
         ),
+        RtInput(value: value),
+        TDSwitch(),
+        RtButton(value.isEmpty ? '按钮' : value, onTap: () {
+          print(value);
+          setState(() {
+            value = randomString();
+          });
+
+          showModalBottomSheet(
+            context: context,
+            backgroundColor: Colors.transparent,
+            builder: (context) {
+              return Container(
+                width: double.infinity,
+                child: RtButton(
+                  'data',
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              );
+            },
+          );
+        })
       ],
     );
   }

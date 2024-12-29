@@ -29,9 +29,6 @@ class _HomePageState extends State<HomePage> {
             }),
           },
         ),
-        Text(
-          activeIndex.toString(),
-        ),
         Expanded(
           child: ListView(
             children: genList(66).map((item) => Text(item['text'])).toList(),
