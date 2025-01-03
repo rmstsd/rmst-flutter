@@ -3,6 +3,7 @@ import 'package:rmst_flutter/components/button.dart';
 import 'package:rmst_flutter/components/tabs.dart';
 import 'package:rmst_flutter/pages/my/my.dart';
 import 'package:rmst_flutter/utils/index.dart';
+import 'package:tdesign_flutter/tdesign_flutter.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -68,7 +69,8 @@ class _HomePageState extends State<HomePage> {
                     bottomTabKey = 'my';
                   });
                 },
-              )
+              ),
+              TDInput()
             ],
           ),
         ),
